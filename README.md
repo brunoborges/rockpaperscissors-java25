@@ -1,19 +1,18 @@
 # Minimal Rock Paper Scissors - Java 25 with Maven 4
 
+[![Build and Test](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/build-and-test.yml)
+
 The smallest possible implementation of Rock Paper Scissors game using Java 25 features and Maven 4.
 
 ## Features
 
-- **Ultra-compact**: Complete game in just a few lines of code
-- **Java 25**: Leverages the latest Java features including:
+- **Ultra-compact**: Complete game in just 10 lines of code
+- **Java 25+**: Leverages the latest Java features including:
   - Unnamed main methods (`void main()`)
+  - Run source directly with `java src/App.java`
   - `var` type inference
   - Modern collections API
-- **Maven 4**: Uses Maven for compilation validation with:
-  - Maven Wrapper for consistent builds
-  - Alternatively, run with any Maven 3 version
-- **Direct Execution**: No complex build artifacts - run source directly with `java src/App.java`
-- **Single-turn gameplay**: Play one round at a time
+  - new IO class for simplified input/output
 - **Smart logic**: Uses modular arithmetic for win/lose detection
 
 ## The Code
@@ -88,13 +87,27 @@ echo "paper" | java src/App.java
 ## Project Structure
 
 ```
-├── .mvn/                     # Maven 4 configuration
-│   ├── wrapper/             # Maven Wrapper files
-│   └── maven.config         # Root project identifier
+├── .github/
+│   └── workflows/
+│       └── build-and-test.yml  # GitHub Actions CI/CD pipeline
+├── .mvn/                       # Maven 4 configuration
+│   ├── wrapper/               # Maven Wrapper files
+│   └── maven.config           # Root project identifier
 ├── src/
-│   └── App.java             # The complete game implementation  
-├── mvnw                     # Maven Wrapper script (Unix)
+│   └── App.java               # The complete game implementation  
+├── mvnw                       # Maven Wrapper script (Unix)
 ├── mvnw.cmd                 # Maven Wrapper script (Windows)
 ├── pom.xml                  # Maven 4 configuration for Java 25
 └── README.md                # This file
 ```
+
+## Continuous Integration
+
+The project includes a GitHub Actions workflow that:
+
+- **Builds**: Compiles the code using Maven 4 with `./mvnw clean compile`
+- **Tests**: Runs the game with different inputs (rock, paper, scissors, exit)
+- **Validates**: Ensures expected output format and functionality
+- **Uploads**: Saves test outputs as artifacts for debugging
+
+The workflow runs on every push and pull request to the main branch using JDK 25.

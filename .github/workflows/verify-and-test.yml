@@ -1,0 +1,79 @@
+name: Verify and Test Rock Paper Scissors
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5
+      
+    - name: Set up JDK 25
+      uses: actions/setup-java@v5
+      with:
+        java-version: '25'
+        distribution: 'microsoft'
+        
+    - name: Cache Maven dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Verify Maven build
+      run: ./mvnw clean compile
+      
+    - name: Test game - Rock vs Computer
+      run: |
+        echo "Testing Rock Paper Scissors game..."
+        echo "rock" | java src/App.java > output.txt
+        echo "Game output:"
+        cat output.txt
+        
+        # Verify the game produces expected output format
+        if grep -q "rock/paper/scissors:" output.txt && grep -q "Computer:" output.txt; then
+          echo "✅ Game runs successfully and produces expected output"
+        else
+          echo "❌ Game output format is unexpected"
+          exit 1
+        fi
+        
+    - name: Test game - Paper vs Computer  
+      run: |
+        echo "paper" | java src/App.java > output2.txt
+        echo "Paper test output:"
+        cat output2.txt
+        
+    - name: Test game - Scissors vs Computer
+      run: |
+        echo "scissors" | java src/App.java > output3.txt
+        echo "Scissors test output:"
+        cat output3.txt
+        
+    - name: Test exit functionality
+      run: |
+        echo "exit" | java src/App.java > output4.txt
+        echo "Exit test output:"
+        cat output4.txt
+        
+        # Verify exit works (should only show prompt)
+        if grep -q "rock/paper/scissors:" output4.txt && ! grep -q "Computer:" output4.txt; then
+          echo "✅ Exit functionality works correctly"
+        else
+          echo "❌ Exit functionality failed"
+          exit 1
+        fi
+        
+    - name: Upload test outputs
+      uses: actions/upload-artifact@v5
+      if: always()
+      with:
+        name: game-test-outputs
+        path: output*.txt
