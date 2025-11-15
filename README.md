@@ -1,6 +1,6 @@
 # Minimal Rock Paper Scissors - Java 25
 
-[![Build and Test](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/verify-and-test.yml/badge.svg)](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/verify-and-test.yml)
+[![Build and Test](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/build.yml/badge.svg)](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/build.yml)
 
 The smallest possible implementation of Rock Paper Scissors game using **Java 25** features.
 
