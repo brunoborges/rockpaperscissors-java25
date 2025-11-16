@@ -47,6 +47,20 @@ This eliminates the need for complex conditional logic or enums.
 - Java 25+ (for both compilation and execution)
 - Maven 4 (automatically handled by Maven Wrapper - only needed for compilation validation). `pom.xml` is compatible with Maven 3 as well.
 
+### Using Dev Container (Recommended)
+
+The project includes a custom VS Code Dev Container with Java 25 and Maven 4 pre-installed:
+
+1. **Open in VS Code**: Make sure you have the "Dev Containers" extension installed
+2. **Reopen in Container**: VS Code will prompt you, or use `Ctrl+Shift+P` → "Dev Containers: Reopen in Container"
+3. **Ready to Go**: Java 25 and Maven 4 are automatically configured
+
+```bash
+# Inside the container, everything just works:
+./mvnw verify
+java src/App.java
+```
+
 ### Building and Running with Maven Wrapper
 
 The project uses Maven 4 only for compilation. Running is done directly with Java 25:
@@ -87,6 +101,9 @@ echo "paper" | java src/App.java
 ## Project Structure
 
 ```
+├── .devcontainer/
+│   ├── devcontainer.json      # VS Code Dev Container configuration
+│   └── Dockerfile             # Custom container with Java 25 + Maven 4
 ├── .github/
 │   └── workflows/
 │       └── build-and-test.yml  # GitHub Actions CI/CD pipeline
