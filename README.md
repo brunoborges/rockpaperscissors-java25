@@ -2,6 +2,13 @@
 
 [![Build and Test](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/build.yml/badge.svg)](https://github.com/brunoborges/rockpaperscissors-java25/actions/workflows/build.yml)
 
+## 🚀 Quick Start
+
+[![Open in VS Code](https://img.shields.io/badge/Open_in-VS_Code-blue?style=for-the-badge&logo=visualstudiocode)](https://vscode.dev/github/brunoborges/rockpaperscissors-java25)
+[![Open in Dev Container](https://img.shields.io/badge/Open_in-Dev_Container-blue?style=for-the-badge&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/brunoborges/rockpaperscissors-java25)
+[![Open in Codespaces](https://img.shields.io/badge/Open_in-Codespaces-darkgreen?style=for-the-badge&logo=github)](https://codespaces.new/brunoborges/rockpaperscissors-java25)
+[![Clone Repository](https://img.shields.io/badge/Clone-Repository-lightgrey?style=for-the-badge&logo=git)](https://github.com/brunoborges/rockpaperscissors-java25.git)
+
 The smallest possible implementation of Rock Paper Scissors game using **Java 25** features.
 
 ## Features
