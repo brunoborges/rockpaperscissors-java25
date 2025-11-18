@@ -57,17 +57,17 @@ jobs:
         echo "Scissors test output:"
         cat output3.txt
         
-    - name: Test exit functionality
+    - name: Test invalid input handling
       run: |
-        echo "exit" | java src/App.java > output4.txt
-        echo "Exit test output:"
+        echo "invalid" | java src/App.java > output4.txt
+        echo "Invalid input test output:"
         cat output4.txt
         
-        # Verify exit works (should only show prompt)
+        # Verify invalid input handling (should only show prompt)
         if grep -q "rock/paper/scissors:" output4.txt && ! grep -q "Computer:" output4.txt; then
-          echo "✅ Exit functionality works correctly"
+          echo "✅ Invalid input handling works correctly"
         else
-          echo "❌ Exit functionality failed"
+          echo "❌ Invalid input handling failed"
           exit 1
         fi
         
@@ -120,9 +120,9 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         
         # Test Exit
-        echo "### 🚪 Exit Test" >> $GITHUB_STEP_SUMMARY
+        echo "### 🚫 Invalid Input Test" >> $GITHUB_STEP_SUMMARY
         echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
-        echo "Input: exit" >> $GITHUB_STEP_SUMMARY
+        echo "Input: invalid" >> $GITHUB_STEP_SUMMARY
         cat output4.txt >> $GITHUB_STEP_SUMMARY
         echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
         echo "**Status**: ✅ Passed" >> $GITHUB_STEP_SUMMARY

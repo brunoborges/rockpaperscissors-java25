@@ -13,7 +13,7 @@ The smallest possible implementation of Rock Paper Scissors game using **Java 25
 
 ## Features
 
-- **Ultra-compact**: Complete game in just 10 lines of code
+- **Ultra-compact**: Complete game in just 7 lines of code
 - **Java 25+**: Leverages the latest Java features including:
   - Unnamed main methods (`void main()`)
   - Run source directly with `java src/App.java`
@@ -30,7 +30,6 @@ The entire game fits in 10 lines of readable code:
 void main() {
     var c = "rock/paper/scissors".split("/"); // array of options
     var u = IO.readln(String.join("/", c) + ": \n"); // prompt user
-    if ("exit".equals(u)) return; // exit condition
     var i = List.of(c).indexOf(u); // get user choice index
     if (i < 0) return; // invalid input check
     var j = new Random().nextInt(3); // computer choice index
@@ -103,7 +102,7 @@ echo "paper" | java src/App.java
 
 1. Type `rock`, `paper`, or `scissors`
 2. See the computer's choice and result
-3. Type `exit` to quit
+3. Program ends after one round
 
 ## Project Structure
 
@@ -130,8 +129,8 @@ echo "paper" | java src/App.java
 The project includes a GitHub Actions workflow that:
 
 - **Builds**: Compiles the code using Maven 4 with `./mvnw clean compile`
-- **Tests**: Runs the game with different inputs (rock, paper, scissors, exit)
-- **Validates**: Ensures expected output format and functionality
+- **Tests**: Runs the game with different inputs (rock, paper, scissors, invalid input)
+- **Validates**: Ensures expected output format and invalid input handling
 - **Uploads**: Saves test outputs as artifacts for debugging
 
 The workflow runs on every push and pull request to the main branch using JDK 25.
