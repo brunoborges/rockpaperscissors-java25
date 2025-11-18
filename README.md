@@ -13,7 +13,7 @@ The smallest possible implementation of Rock Paper Scissors game using **Java 25
 
 ## Features
 
-- **Ultra-compact**: Complete game in just 7 lines of code
+- **Ultra-compact**: Complete game in just 9 lines of code
 - **Java 25+**: Leverages the latest Java features including:
   - Unnamed main methods (`void main()`)
   - Run source directly with `java src/App.java`
